@@ -16,6 +16,8 @@ def scrape(website_urls, keywords):
         print("Website URLs must be a list of different urls you want search for keywords on")
         return 
 
+    i = 0
+
     for website_url in website_urls:
 
         response = requests.get(website_url)
@@ -49,3 +51,6 @@ def scrape(website_urls, keywords):
                             after = words[index+1]
                         print(f'Word before: "{before}"') 
                         print(f'word after: "{after}"\n')
+            i += 1
+
+            if i == len(website_urls): return 
