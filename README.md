@@ -1,4 +1,4 @@
-# Realtime Glasses Detection
+# Online Keyword Search
 
 This Python library scrapes a website, using the Beautifulsoup module, and looks for the keywords you specify. If the keywords are found, it returns the amount of times each keyword was found, all the sentences containing each keyword, and the words before, and after each keyword. This can be seamlessly integrated with databases.
 
