@@ -4,11 +4,11 @@
 import scrape_results
 
 # define an example website url
-website_url = "https://auto.hindustantimes.com/"
+website_urls = ["https://auto.hindustantimes.com/", "https://timesofindia.indiatimes.com/defaultinterstitial.cms"]
 
 # define example keywords
 keywords = ["blues", "incentives"]
 
 # Call the scrape functions and get the sentences containing these keywords
 
-scrape_results.scrape(website_url, keywords)
+scrape_results.scrape(website_urls, keywords)
