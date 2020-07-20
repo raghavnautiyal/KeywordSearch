@@ -4,17 +4,28 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import requests
+from lxml.html import fromstring
 
-def scrape(website_url, keywords):
+def scrape(website_urls, keywords):
     
-    response = requests.get(website_url)
-
     if isinstance(keywords, list) != True:
         print("Keywords must be a list of different words you want to find in the page")
         return 
 
-    if response.status_code == 200: 
-        print("The page opened successfully\n") 
+    if isinstance(website_urls, list) != True:
+        print("Website URLs must be a list of different urls you want search for keywords on")
+        return 
+
+    for website_url in website_urls:
+
+        response = requests.get(website_url)
+
+        if response.status_code == 200: 
+            print(f"\n{fromstring(response.content).findtext('.//title')}: {website_url}\n")
+            print("The page opened successfully\n") 
+
+        else:
+            print(f"Error: The site could not be reached, and showed status code {response.status_code}.")
 
         parser = BeautifulSoup(response.text, 'html.parser')
 
@@ -38,8 +49,3 @@ def scrape(website_url, keywords):
                             after = words[index+1]
                         print(f'Word before: "{before}"') 
                         print(f'word after: "{after}"\n')
-
-    else:
-        print(f"Error: The site could not be reached, and showed status code {response.status_code}.")
-
-
