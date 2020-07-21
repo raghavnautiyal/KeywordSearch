@@ -51,6 +51,6 @@ def scrape(website_urls, keywords):
                             after = words[index+1]
                         print(f'Word before: "{before}"') 
                         print(f'word after: "{after}"\n')
-            i += 1
+        i += 1
 
-            if i == len(website_urls): return 
+        if i == len(website_urls): return 
